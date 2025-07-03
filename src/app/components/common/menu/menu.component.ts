@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule, MatNavList } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -19,24 +19,38 @@ import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/rou
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  isSideNavOpen = true;
+ isSideNavOpen = true;
+  currentRoute: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute){}
+  constructor(private router: Router, private route: ActivatedRoute) {
+    // Listen to route changes
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+        console.log('Current route:', event.url);
+        console.log('Masters active:', this.isActive('/masters'));
+        console.log('Notification logs active:', this.isActive('/notification-logs'));
+      }
+    });
+  }
+
+  ngOnInit() {
+    // Set initial route
+    this.currentRoute = this.router.url;
+  }
 
   toggleSideNav() {
     this.isSideNavOpen = !this.isSideNavOpen;
   }
 
-  selectedMenuItem: string = ''; // Track the currently selected menu item
-
-  selectMenuItem(menuItem: string) {
-    this.selectedMenuItem = menuItem;
-  }
-
   isActive(path: string): boolean {
-    return this.router.url === path;
+    const isActive = this.router.url === path || this.router.url.startsWith(path + '/');
+    console.log(`Checking if ${path} is active. Current URL: ${this.router.url}, Result: ${isActive}`);
+    return isActive;
   }
 
-  logOut(){}
-
+  logOut() {
+    // Your logout logic here
+    console.log('Logging out...');
+  }
 }

@@ -1,5 +1,9 @@
   <div class="table-header-controls">
-    <button mat-icon-button (click)="onUploadClick()" aria-label="Upload data">
+    <!-- The hidden file input -->
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" accept=".xlsx, .xls">
+
+    <!-- The upload icon button -->
+    <button mat-icon-button (click)="fileInput.click()" aria-label="Upload data">
       <mat-icon>cloud_upload</mat-icon>
     </button>
   </div>

@@ -12,6 +12,9 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
   styleUrl: './tyre.component.css'
 })
 export class TyreComponent {
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 onUploadClick() {
   //Show file upload dialog or handle file upload logic here
   

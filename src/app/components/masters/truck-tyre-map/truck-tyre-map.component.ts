@@ -12,6 +12,9 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
   styleUrl: './truck-tyre-map.component.css'
 })
 export class TruckTyreMapComponent {
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 onUploadClick() {
 }
 

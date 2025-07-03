@@ -1,10 +1,40 @@
+/* Add this to your global styles.css file or use ::ng-deep in component */
+
+/* Force override Angular Material's default styles */
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active:hover,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active:focus,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active .mat-list-item-content,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active .mat-list-item-content:hover,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active .mat-list-item-content:focus {
+  background-color: rgba(63, 81, 181, 0.12) !important;
+  color: #3f51b5 !important;
+  font-weight: 500 !important;
+  border-left: 4px solid #3f51b5;
+}
+
+/* Ensure the active state persists through all Material states */
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active .mat-ripple-element {
+  background-color: rgba(63, 81, 181, 0.2) !important;
+}
+
+/* Override any focus or pressed states */
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active.mat-list-item-focus,
+::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active:active {
+  background-color: rgba(63, 81, 181, 0.12) !important;
+  color: #3f51b5 !important;
+}
+
+
 /* You can add global styles to this file, and also import other style files */
 body{
   overflow: hidden;
   zoom: 65%;
 }
 
-/* your-component.component.css */
+.active{
+  background-color: dimgray;
+}
 
 .table-wrapper {
   /* Optional: Add some padding or margin around the whole table section */
@@ -51,7 +81,7 @@ body{
 }
 
   
-mat-toolbar {
+.mat-toolbar {
   position: sticky; /* This is the key to freeze the toolbar */
   top: 0; 
   z-index: 1; 
@@ -110,6 +140,7 @@ mat-toolbar {
 /*Highlight header cells of mat tables*/
 .mat-header-cell {
   background-color: #6f2d2d; /* Light gray background color */
+  
 }
 
 .mat-table-scroll {
