@@ -1,0 +1,33 @@
+  <div class="table-header-controls">
+    <!-- The hidden file input -->
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" accept=".xlsx, .xls">
+
+    <!-- The upload icon button -->
+    <button mat-icon-button (click)="fileInput.click()" aria-label="Upload data">
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
+  </div>
+
+<table mat-table [dataSource]="dataSource!" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let truck"> {{truck.id}} </td>
+  </ng-container>
+
+  <!-- Registration No Column -->
+  <ng-container matColumnDef="registrationNo">
+    <th mat-header-cell *matHeaderCellDef> Registration No </th>
+    <td mat-cell *matCellDef="let truck"> {{truck.registrationNo}} </td>
+  </ng-container>
+
+  <!-- Created At Column -->
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef> Created At </th>
+    <td mat-cell *matCellDef="let truck"> {{truck.createdAt}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

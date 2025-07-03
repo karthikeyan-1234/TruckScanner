@@ -1,0 +1,19 @@
+/* Option 3: Opacity animation but keeping text always visible */
+.unmatched-row-opacity {
+  background-color: #e3e087;
+  font-weight: bolder;
+  color: rgb(192, 11, 11);
+  animation: subtleBlink 2s ease-in-out infinite, shadowBlink 2s ease-in-out infinite;
+}
+
+@keyframes subtleBlink {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; } /* Never goes below 70% opacity */
+  100% { opacity: 1; }
+}
+
+@keyframes shadowBlink {
+  0% { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  50% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+  100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+}

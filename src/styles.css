@@ -1,1 +1,278 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  overflow: hidden;
+  zoom: 65%;
+}
+
+/* your-component.component.css */
+
+.table-wrapper {
+  /* Optional: Add some padding or margin around the whole table section */
+  margin: 20px;
+}
+
+.table-header-controls {
+  display: flex; /* Enables Flexbox */
+  justify-content: flex-end; /* Aligns content (the button) to the far right */
+  align-items: center; /* Vertically centers items if there are multiple on the same line */
+  padding: 8px 0; /* Add some vertical padding above the table */
+}
+
+.mat-table {
+  width: 100%;
+  /* Your existing table styles */
+}
+
+/* Add any other specific styles for your table here */
+
+.example-spacer {
+  flex-grow: 1;
+}
+
+.username-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  padding: 0 12px;
+  max-width: 250px; /* Adjust width as needed */
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.username-text {
+  flex-grow: 1;
+  min-width: 50px;
+  max-width: 100%; /* Allow full width */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+  
+mat-toolbar {
+  position: sticky; /* This is the key to freeze the toolbar */
+  top: 0; 
+  z-index: 1; 
+}
+
+.example-container {
+  position: absolute;
+  height:800px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.button-with-margin {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.mat-main-container {
+  max-height: 400px; /* Set a fixed height for the table container */
+  display: flex;
+}
+
+
+.mat-left-part {
+  flex: 60%; 
+}
+
+.mat-middle-part{
+  flex: 1%; 
+}
+
+.mat-right-part {
+  flex: 39%; 
+}
+
+.mat-table-scroll {
+  overflow: auto; /* Enable scrolling */
+}
+
+
+.icon-container {
+  vertical-align: middle;
+}
+
+.icon-container:hover{
+  cursor: pointer;
+}
+
+
+
+.mat-table-container .mat-form-field {
+  width: 100%; /* Make form field take full width of its container (table cell) */
+  max-width: 100%; /* Ensure it doesn't exceed the cell width */
+}
+
+/*Highlight header cells of mat tables*/
+.mat-header-cell {
+  background-color: #6f2d2d; /* Light gray background color */
+}
+
+.mat-table-scroll {
+  overflow: auto; /* Enable vertical scrolling */
+  height: 400px; /* Adjust the height as needed */
+}
+
+.mat-mdc-header-cell {
+  background-color: #ced3ee !important; /* Light gray background color */
+  border: #4caf50 !important; /* Add a border to the header cell */
+}
+
+
+.mat-main-container {
+  max-height: 400px; /* Set a fixed height for the table container */
+  display: flex;
+}
+
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensures it spans the full width of the header cell */
+}
+
+.header-actions span {
+  flex-grow: 1; /* Allows the "Actions" text to take up available space */
+  text-align: left; /* Aligns the text to the left */
+}
+
+.header-actions button {
+  margin-left: auto; /* Pushes the button to the far right */
+}
+
+/* Replace your existing custom-height related CSS with these */
+.custom-height {
+  margin-top: -16px; /* Compensate for Material form field's default spacing */
+  margin-bottom: -16px;
+}
+
+.custom-height .mat-mdc-form-field-infix {
+  padding: 8px 0 !important;
+  min-height: unset !important;
+}
+
+.custom-height .mat-mdc-form-field-flex {
+  min-height: unset !important;
+}
+
+.custom-height .mat-mdc-form-field-wrapper {
+  padding: 0;
+}
+
+/* Target the input element itself */
+.custom-height .mat-mdc-input-element {
+  margin: 0;
+  height: 24px; /* Adjust this value to match your desired row height */
+  line-height: 24px;
+}
+
+/* Target the select element */
+.custom-height .mat-mdc-select {
+  padding: 0;
+}
+
+
+.cancel-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px; /* Add spacing between the table and button */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.form-container mat-form-field {
+  width: 100%;
+  padding-bottom: 20px !important;
+}
+
+/* Dialog actions styling */
+[mat-dialog-actions] {
+  justify-content: flex-end;
+  padding: 16px 0 0;
+  gap: 8px;
+}
+
+/* Dialog title styling */
+[mat-dialog-title] {
+  margin: 0;
+  padding: 16px 16px 0;
+}
+
+/* Dialog content styling */
+[mat-dialog-content] {
+  padding: 0 16px;
+  margin: 0;
+}
+
+
+.mat-mdc-form-field{
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  height: min-content !important;
+}
+
+
+
+/*********************************Close Icon for Add popups********************/
+
+/* Icon container styling */
+.icon-container {
+  position: absolute;
+  top: 8px; /* Adjust as needed */
+  right: 8px; /* Adjust as needed */
+  z-index: 2; /* Ensure icons appear above other content */
+  display: flex; /* Align icons horizontally */
+  gap: 8px; /* Add spacing between icons */
+}
+
+
+/* Close icon container */
+.close-icon-container {
+  position: absolute;
+  top: 8px; /* Adjust as needed */
+  right: 8px; /* Adjust as needed */
+  z-index: 2; /* Ensure it appears above other content */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Optional hover effect for the close icon */
+.close-icon-container mat-icon {
+  font-size: 15px; /* Adjust icon size */
+  color: #ff0000; /* Red color for the close icon */
+  transition: transform 0.2s ease;
+}
+
+.close-icon-container mat-icon:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+
+
+/* Plus icon styling */
+.plus-icon-container {
+  position: absolute;
+  top: 3px; /* Adjust as needed */
+  right: 40px; /* Adjust as needed */
+  z-index: 2; /* Ensure it appears above other content */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.plus-icon-container mat-icon {
+  font-size: 24px; /* Adjust icon size */
+  color: #4caf50; /* Green color for the plus icon */
+  transition: transform 0.2s ease;
+}
+
+.plus-icon-container mat-icon:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+}
