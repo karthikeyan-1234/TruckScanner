@@ -23,15 +23,6 @@ export class MenuComponent {
   currentRoute: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    // Listen to route changes
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url;
-        console.log('Current route:', event.url);
-        console.log('Masters active:', this.isActive('/masters'));
-        console.log('Notification logs active:', this.isActive('/notification-logs'));
-      }
-    });
   }
 
   ngOnInit() {
@@ -45,7 +36,6 @@ export class MenuComponent {
 
   isActive(path: string): boolean {
     const isActive = this.router.url === path || this.router.url.startsWith(path + '/');
-    console.log(`Checking if ${path} is active. Current URL: ${this.router.url}, Result: ${isActive}`);
     return isActive;
   }
 

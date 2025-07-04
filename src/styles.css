@@ -1,5 +1,37 @@
 /* Add this to your global styles.css file or use ::ng-deep in component */
 
+.table-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.selected-file {
+  font-size: 12px;
+  color: #666;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Snackbar styles */
+:host ::ng-deep .success-snackbar {
+  background-color: #4caf50;
+  color: white;
+}
+
+:host ::ng-deep .error-snackbar {
+  background-color: #f44336;
+  color: white;
+}
+
+button[mat-icon-button]:disabled {
+  opacity: 0.6;
+}
+
+
 /* Force override Angular Material's default styles */
 ::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active,
 ::ng-deep .mat-drawer .mat-nav-list .mat-list-item.active:hover,
@@ -29,7 +61,7 @@
 /* You can add global styles to this file, and also import other style files */
 body{
   overflow: hidden;
-  zoom: 65%;
+  zoom: 75%;
 }
 
 .active{

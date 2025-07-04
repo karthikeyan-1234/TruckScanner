@@ -27,4 +27,8 @@ export class TruckService {
   updateTruck(id: number, truck: Truck): Observable<Truck> {
     return this.http.put<Truck>(`${this.apiUrl}/UpdateTruckAsync/${id}`, truck);
   }
+
+  uploadTruckData(formData: FormData): Observable<any> {
+    return this.http.post('https://localhost:7272/api/Upload/UploadTruckData', formData);    
+  }
 }

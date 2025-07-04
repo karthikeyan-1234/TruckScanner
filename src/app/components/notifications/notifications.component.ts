@@ -20,6 +20,9 @@ export class NotificationsComponent {
   //Table to display notifications
   displayedColumns: string[] = ['logId', 'truckRegistrationNo', 'tyreRfId', 'message', 'timestamp'];
   dataSource = new MatTableDataSource<LogUpdateNotification>(this.notifications);
+  
+  // Get source.gif from public folder and display it in the component
+  selectedTruckImage: string = 'assets/source.gif';
 
   constructor(private signalrService: SignalrService, private logService: LogService) {
 
