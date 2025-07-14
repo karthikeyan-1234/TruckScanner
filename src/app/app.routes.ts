@@ -20,5 +20,9 @@ export const routes: Routes = [
     {
         path: 'notification-logs',
         component: NotificationsComponent
+    },
+    {
+        path:'',
+        component: MastersComponent
     }
 ];

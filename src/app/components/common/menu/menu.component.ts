@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule, MatNavList } from '@angular/material/list';
@@ -14,7 +15,7 @@ import { ActivatedRoute, Router, RouterModule, RouterOutlet, NavigationEnd } fro
   selector: 'app-menu',
   imports: [RouterOutlet, MatToolbar, MatIconModule, MatButtonModule, 
     MatTableModule, CommonModule, MatSidenavModule, MatNavList, MatListModule,
-  RouterModule,HttpClientModule],
+  RouterModule, HttpClientModule, RouterLinkActive, RouterLink],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
@@ -34,10 +35,7 @@ export class MenuComponent {
     this.isSideNavOpen = !this.isSideNavOpen;
   }
 
-  isActive(path: string): boolean {
-    const isActive = this.router.url === path || this.router.url.startsWith(path + '/');
-    return isActive;
-  }
+ 
 
   logOut() {
     // Your logout logic here

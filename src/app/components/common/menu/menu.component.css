@@ -37,6 +37,10 @@
   transition: all 0.3s ease;
 }
 
+.active{
+  background-color: aqua;
+}
+
 /* Alternative styling - darker theme (uncomment if preferred) */
 /*
 .mat-nav-list .mat-list-item.active {

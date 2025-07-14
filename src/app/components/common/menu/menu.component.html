@@ -14,12 +14,10 @@
   <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened="{{ isSideNavOpen }}">
       <mat-nav-list>
-        <a mat-list-item routerLink="/masters" 
-           [ngClass]="{'active': isActive('/masters')}">Masters</a>
+        <a mat-list-item routerLink="/masters" routerLinkActive="active">Masters</a>
       </mat-nav-list>
       <mat-nav-list>
-        <a mat-list-item routerLink="/notification-logs" 
-           [ngClass]="{'active': isActive('/notification-logs')}">Notification Logs</a>
+        <a mat-list-item routerLink="/notification-logs" routerLinkActive="active">Notification Logs</a>
       </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>

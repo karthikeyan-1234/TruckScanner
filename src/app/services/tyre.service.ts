@@ -31,4 +31,9 @@ export class TyreService {
   getTyreById(id: number): Observable<Tyre> {
     return this.http.get<Tyre>(`${this.apiUrl}/tyres/${id}`);
   }
+
+  uploadTyreData(formData: FormData): Observable<any> {
+    return this.http.post('https://localhost:7272/api/Upload/UploadTyreData', formData);
+  }
+
 }

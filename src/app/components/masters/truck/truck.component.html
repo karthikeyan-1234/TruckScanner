@@ -12,6 +12,10 @@
   <span *ngIf="selectedFile && !isUploading" class="selected-file">
     {{ selectedFile.name }}
   </span>
+
+  <button mat-icon-button class="add-button" (click)="addTruck()" aria-label="Add Truck" matTooltip="Add new truck">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
 
 <table mat-table [dataSource]="dataSource!" class="mat-elevation-z8">
@@ -34,6 +38,19 @@
     <td mat-cell *matCellDef="let truck"> {{truck.createdAt}} </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let truck">
+      <button mat-icon-button (click)="editTruck(truck)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deleteTruck(truck.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

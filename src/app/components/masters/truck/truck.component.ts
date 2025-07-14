@@ -7,33 +7,47 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import { AddEditComponent } from "./add-edit/add-edit.component";
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-truck',
   imports: [
-    MatTableModule, 
-    MatIconModule, 
-    MatButtonModule, 
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
-    CommonModule
-  ],
+    CommonModule,
+    MatDialogModule
+],
   templateUrl: './truck.component.html',
   styleUrl: './truck.component.css'
 })
 export class TruckComponent {
-  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+
+  SidebarOpen: boolean = false;
+
+
+deleteTruck(arg0: any) {
+throw new Error('Method not implemented.');
+}
+
+
+
+@ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   
   private snackBar = inject(MatSnackBar);
   
   trucks: Truck[] = [];
   dataSource: MatTableDataSource<Truck> | undefined;
-  displayedColumns: string[] = ['id', 'registrationNo', 'createdAt'];
+  displayedColumns: string[] = ['id', 'registrationNo', 'createdAt', 'actions'];
   
   // Loading state for upload
   isUploading = false;
   selectedFile: File | null = null;
+  editedTruck: Truck | null = null;
 
-  constructor(private truckService: TruckService) { }
+  constructor(private truckService: TruckService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadTrucks();
@@ -55,6 +69,9 @@ export class TruckComponent {
       }
     );
   }
+
+
+  //#region  file upload methods
 
   onUploadClick() {
     // Trigger the hidden file input click
@@ -154,4 +171,46 @@ export class TruckComponent {
     this.fileInput.nativeElement.value = '';
     this.selectedFile = null;
   }
+
+  //#endregion
+
+
+
+  editTruck(truck: Truck) {
+    console.log('Editing truck:', truck);
+    // Logic to open the edit sidebar or dialog
+    this.openRightSideDialog(truck, 'edit');
+  }
+
+  addTruck() {
+    // Open the add dialog from the right side
+    this.openRightSideDialog(null, 'add');
+  }
+
+  private openRightSideDialog(truck: Truck | null, mode: string) {
+  const dialogRef = this.dialog.open(AddEditComponent, {
+    width: '350px',
+    height: '100vh',
+    maxWidth: '450px',
+    maxHeight: '100vh',
+    position: { right: '0' },
+    panelClass: ['right-side-dialog'],
+    hasBackdrop: true,
+    backdropClass: 'right-side-backdrop',
+    disableClose: true, // Prevent closing on backdrop click
+    data: {
+      truck: truck,
+      mode: mode
+    }
+  });
+
+  // Handle dialog close
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('Dialog closed with result:', result);
+      // Reload trucks if data was modified
+      this.loadTrucks();
+    }
+  });
+}
 }
