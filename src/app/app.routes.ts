@@ -23,6 +23,7 @@ export const routes: Routes = [
     },
     {
         path:'',
-        component: MastersComponent
+        redirectTo: 'masters',
+        pathMatch: 'full'
     }
 ];

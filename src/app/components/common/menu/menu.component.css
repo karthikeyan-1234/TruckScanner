@@ -38,7 +38,9 @@
 }
 
 .active{
-  background-color: aqua;
+  background-color: #a189c9;
+  color: rgb(236, 226, 226) !important;
+  font-weight: bold !important;
 }
 
 /* Alternative styling - darker theme (uncomment if preferred) */
