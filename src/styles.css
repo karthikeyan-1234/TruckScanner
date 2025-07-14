@@ -277,10 +277,6 @@ body{
   zoom: 75%;
 }
 
-.active{
-  background-color: dimgray;
-}
-
 .table-wrapper {
   /* Optional: Add some padding or margin around the whole table section */
   margin: 20px;
